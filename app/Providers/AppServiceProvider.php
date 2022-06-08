@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
+use League\OAuth2\Client\Provider\Github;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(Github::class, fn() => new Github([
+            'clientId' => config('services.github.client_id'),
+            'clientSecret' => config('services.github.client_secret'),
+        ]));
     }
 
     /**

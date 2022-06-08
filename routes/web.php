@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $githubAuthProvider = app()->make(\App\Modules\AuthProviders\GithubAuthProvider::class);
+    dd($githubAuthProvider->getAccessToken());
 });
