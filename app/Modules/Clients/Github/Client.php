@@ -4,7 +4,6 @@ namespace App\Modules\Clients\Github;
 
 use App\Modules\AuthProviders\GithubAuthProvider;
 use App\Modules\Traits\GithubTrait;
-use Github\AuthMethod;
 use Github\Client as GithubClient;
 use App\Modules\Clients\BaseAppClient;
 use Michelf\Markdown;
@@ -20,7 +19,7 @@ final class Client extends BaseAppClient
 
     public function __construct(private GithubAuthProvider $authProvicer, private GithubClient $client)
     {
-        $this->client->authenticate($authProvicer->getAccessToken(), AuthMethod::ACCESS_TOKEN);
+        $this->client->authenticate($authProvicer->getAccessToken(), 'access_token_header');
     }
 
 

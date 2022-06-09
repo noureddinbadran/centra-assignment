@@ -41,6 +41,7 @@ final class GithubHandler implements IHandler
 
         } catch (\Throwable $e)
         {
+            dd($e->getMessage());
             Log::error((string)$e);
         }
     }
