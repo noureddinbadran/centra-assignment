@@ -1,6 +1,8 @@
+<?php //TODO divide this single file to some partial pages ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="https://new-app-nour.herokuapp.com/" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
