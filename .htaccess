@@ -2,6 +2,4 @@
 RewriteEngine On
 RewriteCond %{REQUEST_URI}  !^publick
  RewriteRule ^(.*)$ public/$1 [L]
-RewriteRule ^(something/)$ something [R]
-RewriteRule ^(something)$ index.php?page=$1 [L]
 </ifModule>
