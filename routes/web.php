@@ -13,7 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $githubClient = app()->make(\App\Modules\Clients\Github\Client::class);
-    dd($githubClient->getMilestones());
-});
+Route::get('/', [\App\Http\Controllers\BoardController::class, 'getBoardDetails']);
