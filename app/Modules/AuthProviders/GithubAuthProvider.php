@@ -20,17 +20,21 @@ final class GithubAuthProvider implements IAuthProvider
      */
     public function getAccessToken()
     {
-        if (\request()->get('code') === null) {
-            $redirectUrl = $this->github->getAuthorizationUrl();
+        try {
+            if (\request()->get('code') === null) {
+                $redirectUrl = $this->github->getAuthorizationUrl();
 
-            $response = new RedirectResponse($redirectUrl);
-            $response->send();
-        }
-        else
+                $response = new RedirectResponse($redirectUrl);
+                $response->send();
+            } else {
+                return $this->github->getAccessToken('authorization_code', [
+                    'code' => \request()->get('code'),
+                ]);
+            }
+        } catch (\Throwable $e)
         {
-            return $this->github->getAccessToken('authorization_code', [
-                'code' => \request()->get('code'),
-            ]);
+            $response = new RedirectResponse('/');
+            $response->send();
         }
     }
 }
