@@ -19,7 +19,8 @@ final class Client extends BaseAppClient
 
     public function __construct(private GithubAuthProvider $authProvicer, private GithubClient $client)
     {
-        $this->client->authenticate($authProvicer->getAccessToken(), 'access_token_header');
+        // in case we need to authenticate with github in the future, only we should uncomment this
+        //$this->client->authenticate($authProvicer->getAccessToken(), 'access_token_header');
     }
 
 
